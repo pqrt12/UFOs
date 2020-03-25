@@ -23,7 +23,7 @@ function buildTable(data) {
 
 function handleClick() {
     //  '#' -> signify HTML id.
-    let date = d3.select("#datatime").property("value");
+    let date = d3.select("#datetime").property("value");
 
     //  default includes all.
     let filteredData = tableData;
@@ -35,11 +35,11 @@ function handleClick() {
 
     //  why not inside if ?
     //  rebuilt the table
-    buildTable(filteredData);    
+    buildTable(filteredData);
 }
 
 //  select / selectAll
-d3.select("#filter-btn").on("click", handleClick);
+d3.selectAll("#filter-btn").on("click", handleClick);
 
 //  build the table when the page loads
 buildTable(tableData);
