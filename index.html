@@ -10,15 +10,18 @@
     <link rel="stylesheet" href="static/css/style.css">
 </head>
 
-<body>
-    <!-- why "wrapper? -->
+<!-- where to choose from? css.color.background -->
+<body class="bg-dark">
+    <!-- why "wrapper? similar to container -->
     <div class="wrapper">
-        <nav class="navbar navbar-expand-lg">
+        <!-- no diff seen w/ bd-dark here -->
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
             <a class="navbar-brand" href="index.html">UFO Sightings</a>
         </nav>
     
         <div class="jumbotron">
-            <h1>The Truth Is Out There</h1>
+            <!-- bootstrap class -->
+            <h1 class="display-4">The Truth Is Out There</h1>
         </div>
 
         <!-- grid system: containers, rows, columns -->
@@ -40,18 +43,18 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md3">
-                    <form>
+                    <form class="bg-dark">
                         <p>Filter Search</p>
                     </form>
                     <!-- ul: unorder list -->
-                    <ul class="list-group">
+                    <ul class="list-group bg-dark">
                         <!-- li: list item -->
-                        <li class="list_group_item">
+                        <li class="list_group_item bg-dark">
                             <label for="date">Enter Date</label>
                             <input type="text" placeholder="1/10/2010" id="datetime" />
                         </li>
-                        <li class="list_group_item">
-                            <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                        <li class="list_group_item bg-dark text-center">
+                            <button id="filter-btn" type="button" class="btn btn-light">Filter Table</button>
                         </li>
                     </ul>
                 </div>
