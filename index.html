@@ -42,21 +42,39 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md3">
+                <div class="col-md-3">
                     <form class="bg-dark">
-                        <p>Filter Search</p>
+                        <br>
+                        <h5>Filter Search Criteria</h5>
                     </form>
-                    <!-- ul: unorder list -->
-                    <ul class="list-group bg-dark">
-                        <!-- li: list item -->
-                        <li class="list_group_item bg-dark">
-                            <label for="date">Enter Date</label>
-                            <input type="text" placeholder="1/10/2010" id="datetime" />
-                        </li>
-                        <li class="list_group_item bg-dark text-center">
-                            <button id="filter-btn" type="button" class="btn btn-light">Filter Table</button>
-                        </li>
-                    </ul>
+
+                    <form class="bg_dark">
+                        <div class="form-group">
+                            <label for="date"> <small>Date</small> </label>
+                            <input type="text" class="form-control" placeholder="1/12/2010" id="datetime" />
+                        </div>
+                        <div class="form-group">
+                            <label for="city"> <small>City</small></label>
+                            <input type="text" class="form-control" placeholder="eugene" id="city" />
+                        </div>
+                        <div class="form-group">
+                            <label for="state"> <small>State</small></label>
+                            <input type="text" class="form-control" placeholder="or" id="state" />
+                        </div>
+                        <div class="form-group">
+                            <label for="country"> <small>Country</small></label>
+                            <input type="text" class="form-control" placeholder="us" id="country" />
+                        </div>
+                        <div class="form-group">
+                            <label for="shape"> <small>Shape</small></label>
+                            <input type="text" class="form-control" placeholder="unknown" id="shape" />
+                        </div>
+                    </form>
+
+                    <form class="bg-dark text-center">
+                        <button id="filter-btn" type="button" class="btn btn-light">Filter Table</button>
+                    </form>
+                    <br>
                 </div>
                 <div class="col-md-9">
                     <table class="table table-striped">

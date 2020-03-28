@@ -24,6 +24,10 @@ function buildTable(data) {
 function handleClick() {
     //  '#' -> signify HTML id.
     let date = d3.select("#datetime").property("value");
+    let city = d3.select("#city").property("value");
+    let state = d3.select("#state").property("value");
+    let country = d3.select("#country").property("value");
+    let shape = d3.select("#shape").property("value");
 
     //  default includes all.
     let filteredData = tableData;
@@ -32,7 +36,18 @@ function handleClick() {
         //  array.filter(function(cur, [index, [arr]]), thisValue).
         filteredData = filteredData.filter(row => row.datetime === date);
     }
-
+    if (city) {
+        filteredData = filteredData.filter(row => row.city === city);
+    }
+    if (state) {
+        filteredData = filteredData.filter(row => row.state === state);
+    }
+    if (country) {
+        filteredData = filteredData.filter(row => row.country === country);
+    }
+    if (shape) {
+        filteredData = filteredData.filter(row => row.shape === shape);
+    }
     //  why not inside if ?
     //  rebuilt the table
     buildTable(filteredData);
