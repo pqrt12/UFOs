@@ -10,7 +10,7 @@ function buildTable(data) {
     tbody.html("");
 
     //  which line creates the table column header?
-	data.forEach((dataRow) => {
+    data.forEach((dataRow) => {
         //  tag "tr": table row.
         let row = tbody.append("tr");
         Object.values(dataRow).forEach((val) => {
@@ -21,41 +21,53 @@ function buildTable(data) {
     });
 }
 
-function filterChange() {
-    //  '#' -> signify HTML id.
-    let date = d3.select("#datetime").property("value");
-    let city = d3.select("#city").property("value");
-    let state = d3.select("#state").property("value");
-    let country = d3.select("#country").property("value");
-    let shape = d3.select("#shape").property("value");
+//  Keep track of all filter criteria
+//  for what? who needs them?
+//  note: match syntex used in index.html.
+var filterCriteria = {
+    datetime: "",
+    city: "",
+    state: "",
+    country: "",
+    shape: ""
+};
 
+//  update filterCriteria.
+function updateCriteria() {
+    for (let key in filterCriteria) {
+        filterCriteria[key] = d3.select("#" + key).property("value");;
+    }
+}
+
+function filterTable() {
     //  default includes all.
     let filteredData = tableData;
-    if (date) {
-        //  triple "===": strict equality.
-        //  array.filter(function(cur, [index, [arr]]), thisValue).
-        filteredData = filteredData.filter(row => row.datetime === date);
+    for (let key in filterCriteria) {
+        if (filterCriteria[key]) {
+            filteredData = filteredData.filter(row => row[key] === filterCriteria[key]);
+        }
     }
-    if (city) {
-        filteredData = filteredData.filter(row => row.city === city);
-    }
-    if (state) {
-        filteredData = filteredData.filter(row => row.state === state);
-    }
-    if (country) {
-        filteredData = filteredData.filter(row => row.country === country);
-    }
-    if (shape) {
-        filteredData = filteredData.filter(row => row.shape === shape);
-    }
-    //  why not inside if ?
+
     //  rebuilt the table
     buildTable(filteredData);
 }
 
+//  anything could be different between the two?
+//  form change only triggers this one.
+function filterChange() {
+    updateCriteria();
+    filterTable();
+}
+
+//  filter botton click trigger this one.
+function handleClick() {
+    updateCriteria();
+    filterTable();
+}
+
 //  select / selectAll
 d3.selectAll("#form-input").on("change", filterChange);
-d3.selectAll("#filter-btn").on("click", filterChange);
+d3.selectAll("#filter-btn").on("click", handleClick);
 
 //  build the table when the page loads
 buildTable(tableData);
