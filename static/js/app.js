@@ -21,7 +21,7 @@ function buildTable(data) {
     });
 }
 
-function handleClick() {
+function filterChange() {
     //  '#' -> signify HTML id.
     let date = d3.select("#datetime").property("value");
     let city = d3.select("#city").property("value");
@@ -54,7 +54,8 @@ function handleClick() {
 }
 
 //  select / selectAll
-d3.selectAll("#filter-btn").on("click", handleClick);
+d3.selectAll("#form-input").on("change", filterChange);
+d3.selectAll("#filter-btn").on("click", filterChange);
 
 //  build the table when the page loads
 buildTable(tableData);
